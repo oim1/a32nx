@@ -27,6 +27,10 @@ export class VMLeg implements Leg {
         return undefined;
     }
 
+    get initialLocation(): undefined {
+        return undefined;
+    }
+
     // No terminator location since manual legs are infinite
     get terminatorLocation(): undefined {
         return undefined;

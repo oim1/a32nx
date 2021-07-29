@@ -9,7 +9,7 @@ import {
     SpeedConstraint,
     getAltitudeConstraintFromWaypoint,
     getSpeedConstraintFromWaypoint,
-    waypointToTerminatorLocation,
+    waypointToLocation,
 } from '@fmgc/guidance/lnav/legs';
 import { WayPoint } from '@fmgc/types/fstypes/FSTypes';
 
@@ -45,8 +45,12 @@ export class TFLeg implements AltitudeConstrainedLeg {
         return getAltitudeConstraintFromWaypoint(this.to);
     }
 
+    get initialLocation(): LatLongData {
+        return waypointToLocation(this.from);
+    }
+
     get terminatorLocation(): LatLongData {
-        return waypointToTerminatorLocation(this.to);
+        return waypointToLocation(this.to);
     }
 
     getPseudoWaypointLocation(distanceBeforeTerminator: NauticalMiles): LatLongData {
